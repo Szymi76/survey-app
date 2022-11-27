@@ -1,0 +1,126 @@
+/*////////// front section \\\\\\\\\\*/
+
+#front {
+    display: flex;
+    justify-content: space-around;
+    padding: 9rem 5rem 2rem 5rem;
+}
+#front div {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+}
+#front div h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--indigo);
+}
+#front div h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--black);
+}
+#front div h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--dark-gray);
+}
+#front div span {
+    display: flex;
+    gap: .75rem;
+}
+#front img {
+    width: 35%;
+    object-fit: contain;
+}
+
+@media (max-width: 1050px) {
+    #front {
+        flex-direction: column;
+        padding: 9rem 5rem 2rem 5rem;
+        gap: 2rem;
+        align-items: center;
+    }
+    #front div {
+        width: 100%;
+    }
+    #front img {
+        width: 70%;
+    }
+}
+
+@media (max-width: 725px) {
+    #front {
+        padding: 9rem 1rem 2rem 1rem;
+    }
+    #front img {
+        width: 100%;
+    }
+}
+
+/*////////// url section \\\\\\\\\\*/
+
+#url {
+    background-color: var(--light-gray);
+    text-align: center;
+    height: auto;
+    padding: 2rem 0;
+}
+#url h1 {
+    font-weight: 500;
+    font-size: 2.5rem;
+    padding: 1.5rem;
+}
+#url p {
+    color: var(--dark-gray);
+    text-align: left;
+    max-width: 950px;
+    margin: 0 auto;
+    width: 95%;
+
+}
+#home-url-input {
+    border: 2px solid var(--indigo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--radius);
+}
+#home-url-input div {
+    width: 10%;
+    min-width: 90px;
+    padding: var(--padding);
+    border-right: 2px solid var(--indigo);
+    color: var(--indigo);
+    font-weight: 500;
+}
+#home-url-input input {
+    width: 75%;
+    padding: .45rem 1rem;
+    outline: none;
+    height: 100%;
+}
+#home-url-input button {
+    width: 16%;
+    min-width: 110px;
+    padding: var(--padding);
+    color: var(--white);
+    background-color: var(--indigo);
+    outline: none;
+}
+@media (max-width: 450px) {
+    #home-url-input {
+        flex-direction: column;
+    }
+    #home-url-input div, #home-url-input input {
+        border: none;
+        border-bottom: 2px solid var(--indigo);
+        width: 100%;
+    }
+    #home-url-input button {
+        width: 100%;
+    }
+}

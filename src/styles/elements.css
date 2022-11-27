@@ -1,0 +1,182 @@
+/*////////// button \\\\\\\\\\*/
+.btn {
+    color: var(--white);
+    padding: var(--padding);
+    border-radius: var(--radius);
+    transition-duration: 100ms;
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    white-space: nowrap;
+}
+.btn:hover, .btn:focus {
+    filter: brightness(95%);
+}
+.btn-rounded {
+    border-radius: 9999px !important;
+    padding: .5rem 2.5rem;
+}
+.btn-long {
+    width: 10rem !important;
+}
+/*////////// input \\\\\\\\\\*/
+
+.input {
+    color: var(--black);
+    border-width: 2px;
+    border-style: solid;
+    padding: .45rem 1rem;
+    border-radius: var(--radius);
+    transition-duration: 150ms;
+    outline: none;
+}
+.input:focus {
+    /* box-shadow: var(--shadow); */
+}
+.input::placeholder {
+    color: var(--dark-gray);
+}
+.input:focus::placeholder {
+    color: transparent;
+}
+
+/*////////// textarea \\\\\\\\\\*/
+
+.textarea {
+    color: var(--black);
+    border-width: 2px;
+    border-style: solid;
+    padding: .45rem 1rem;
+    border-radius: var(--radius);
+    /* transition-duration: 150ms; */
+    outline: none;
+}
+.textarea:focus {
+    /* box-shadow: var(--shadow); */
+    /* backdrop-filter: blur(1.5rem); */
+}
+.textarea::placeholder {
+    color: var(--dark-gray);
+}
+.textarea:focus::placeholder {
+    color: transparent;
+}
+
+/*////////// button outlined \\\\\\\\\\*/
+
+.btn-outlined {
+    border: 2px solid var(--indigo);
+    color: var(--indigo);
+    background-color: var(--white);
+    font-weight: 500;
+}
+.btn-outlined:hover {
+    background-color: var(--light-indigo);
+}
+.selected {
+    background-color: var(--light-indigo) !important;
+}
+
+/*////////// input checkbox \\\\\\\\\\*/
+
+.checkbox {
+    display: flex;
+    gap: .5rem;
+    font-weight: 400;
+}
+.checkbox span {
+    border: 2px solid var(--indigo);
+    border-radius: var(--radius);
+    color: var(--indigo);
+    transition-duration: 100ms;
+    cursor: pointer;
+}
+.checkbox span:hover {
+    background-color: var(--light-indigo);
+}
+.checkbox .checked {
+    background-color: var(--light-indigo);
+}
+
+/*////////// input with row \\\\\\\\\\*/
+
+.input-with-row {
+    display: flex;
+    border: 2px solid var(--indigo);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.input-with-row label {
+    white-space: nowrap;
+    border-right: 2px solid var(--indigo);
+    padding: var(--padding);
+    background-color: var(--light-indigo);
+    color: var(--indigo);
+    font-weight: 500;
+}
+.input-with-row input {
+    outline: none;
+    padding: .45rem 1rem;
+}
+@media(max-width: 525px) {
+    .input-with-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    .input-with-row label {
+        border: none;
+        border-bottom: 2px solid var(--indigo);
+    }
+}
+
+/*////////// input with button \\\\\\\\\\*/
+
+.input-with-button {
+    display: flex;
+    border: 2px solid var(--indigo);
+    border-radius: var(--radius);
+    overflow: hidden;
+    width: min-content;
+}
+.input-with-button input {
+    outline: none;
+    padding: .45rem 1rem;
+    border-right: 2px solid var(--indigo);
+}
+.input-with-button button {
+    color: var(--white);
+    background-color: var(--indigo);
+    padding: var(--padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+.input-with-button button:hover {
+    filter: brightness(95%);
+}
+.input-with-button input:focus::placeholder {
+    color: transparent;
+}
+
+/*////////// input with icon \\\\\\\\\\*/
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: large;
+    font-weight: 500;
+}
+.input-with-icon input {
+    background-color: transparent;
+    width: min-content;
+    outline: none;
+    border-bottom: 2px solid transparent;
+    /* padding: 1rem 0; */
+}
+.input-with-icon input:focus {
+    border-bottom: 2px solid black;
+}
