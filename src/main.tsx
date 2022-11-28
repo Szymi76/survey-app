@@ -13,12 +13,16 @@ import "./styles/home.css";
 import "./styles/creator.css";
 import "./styles/survey.css";
 
+import AuthProvider from "./components/AuthProvider";
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Nav />
-      <App />
-      <Footer />
+      <AuthProvider>
+        <Nav />
+        <App />
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // hook do pobierania danych api - url
-const useFetch = <T>(url: string) => {
+const useFetch = <T>(method: string, url: string, send?: any, control = true) => {
   const [data, setData] = useState<null | T>(null);
   const [error, setError] = useState<null | Error>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [fire, setFire] = useState(!control);
+
+  const token = localStorage.getItem("token");
+  const auth = { Authorization: `Bearer ${token}` };
 
   useEffect(() => {
+    if (!fire) return;
+
     let unmounted = false;
     let source = axios.CancelToken.source();
 
@@ -15,10 +21,7 @@ const useFetch = <T>(url: string) => {
     setError(null);
     setLoading(true);
 
-    axios
-      .get(url, {
-        cancelToken: source.token,
-      })
+    axios({ method, url, data: send, headers: auth, cancelToken: source.token })
       .then(result => {
         if (!unmounted) {
           setData(result.data);
@@ -43,9 +46,11 @@ const useFetch = <T>(url: string) => {
       unmounted = true;
       source.cancel("Żądanie anulowane po przez odmątowanie komponentu.");
     };
-  }, []);
+  }, [fire]);
 
-  return [data, error, loading] as const;
+  const trigger = () => setFire(true);
+
+  return [data, error, loading, trigger] as const;
 };
 
 export default useFetch;

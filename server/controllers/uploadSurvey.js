@@ -13,8 +13,8 @@ const uploadSurvey = async (req, res) => {
       active_until,
     });
 
-    await survey.save();
-    res.status(201).json({ message: "Survey was uploaded" });
+    const result = await survey.save();
+    res.status(201).json(result);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

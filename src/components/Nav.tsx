@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DocumentTextIcon, EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import AuthContext from "../contexts/AuthContext";
 
 const Nav = () => {
-  const { user, logIn } = useAuth();
+  const auth = useContext(AuthContext);
+  if (!auth) return;
+
+  const { user, logIn } = auth;
 
   return (
     <nav>

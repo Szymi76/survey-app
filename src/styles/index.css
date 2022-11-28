@@ -30,3 +30,15 @@
   padding: 0;
 }
 
+
+/* prim */
+.auth-prim {
+  padding: 10rem;
+  border: 1px solid black;
+}
+.auth-prim input {
+  border: 1px solid black;
+}
+.auth-prim button {
+  border: 3px solid blue;
+}

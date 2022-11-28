@@ -26,7 +26,8 @@
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.4.3",
-    "use-immer": "^0.8.1"
+    "use-immer": "^0.8.1",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

@@ -45,6 +45,7 @@
 .qn-tags-wrapper {
     padding: .5rem 0;
     display: flex;
+    flex-wrap: wrap;
     gap: .5rem;
 }
 .qn-tags-wrapper p {

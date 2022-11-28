@@ -33,9 +33,9 @@ interface Survey {
   title: string;
   userID: string;
   questions: Question[];
-  created_at: number;
-  active_from: number;
-  active_until: number;
+  created_at: number | string;
+  active_from: number | string;
+  active_until: number | string;
 }
 
 export type { Survey, Question, Answers, Answer };
