@@ -10,7 +10,7 @@ import CreatorContext from "../contexts/CreatorContext";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
-const POST_URL = "http://localhost:3000/api/survey/upload-survey";
+const POST_URL = `${location.origin}/api/survey/upload-survey`;
 
 type PublishModalProps = {
   show: boolean;

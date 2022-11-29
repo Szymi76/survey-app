@@ -8,7 +8,7 @@ const Auth = () => {
   const [create, setCreate] = useImmer({ displayName: "", email: "", password: "" });
 
   const auth = useContext(AuthContext);
-  if (!auth) return;
+  if (!auth) return <></>;
 
   const { user, createAccount, logIn, logOut, loading, error } = auth;
 

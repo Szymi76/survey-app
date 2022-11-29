@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import QuestionsContext from "../../contexts/QuestionsContext";
 import { Question } from "../../types/Survey";
 

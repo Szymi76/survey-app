@@ -1,10 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import SurveyPage from "./components/Survey";
-// import Creator from "./components/Creator";
-import useAuth from "./hooks/useAuth";
-// import Creator from "./Creator";
-import Creator from "./Creator2";
+import SurveyPage from "./Survey";
+import Creator from "./Creator";
 import Auth from "./components/Auth";
 
 function App() {

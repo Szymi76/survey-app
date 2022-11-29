@@ -3,14 +3,14 @@ import { prettyQnType } from "../func/prettyQnType";
 import { Question } from "../types/Survey";
 
 interface ModalOnHover {
-  qn: Question;
+  question: Question;
 }
 
-const ModalOnHover = ({ qn }: ModalOnHover) => {
+const ModalOnHover = ({ question }: ModalOnHover) => {
   return (
     <div className="qn-details">
-      <h4>{qn.required ? "Wymagane *" : "Nie wymagane"}</h4>
-      <p>{prettyQnType(qn.type)}</p>
+      <h4>{question.required ? "Wymagane *" : "Nie wymagane"}</h4>
+      <p>{prettyQnType(question.type)}</p>
     </div>
   );
 };

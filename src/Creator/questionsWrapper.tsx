@@ -4,41 +4,54 @@ import {
   PencilIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { prettyQnType } from "../func/prettyQnType";
-import { Question } from "../types/Survey";
-import { Checkbox } from "./Elements";
+import { Checkbox } from "../components/Elements";
+import CreatorContext from "../contexts/CreatorContext";
 
 interface QuestionWrapperProps {
   children: React.ReactNode;
-  qns: Question[];
-  setQns: React.Dispatch<React.SetStateAction<Question[]>>;
-  i: number;
+  index: number;
 }
 
-const QuestionWrapper = ({ children, qns, setQns, i }: QuestionWrapperProps) => {
+const QuestionWrapper = ({ children, index }: QuestionWrapperProps) => {
   const [toggled, setToggled] = useState(true);
 
+  const context = useContext(CreatorContext);
+  if (!context) return <></>;
+  const { survey, setSurvey } = context;
+
   // ustawieanie tytyłu
-  const setTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQns(qns => qns.map((q, ind) => (i == ind ? { ...q, label: e.target.value } : q)));
+  const setLabel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSurvey(survey => {
+      survey.questions[index].label = e.target.value;
+    });
   };
 
   // przełącznie wymagania
   const toggleRequired = () => {
-    setQns(qns => qns.map((q, ind) => (i == ind ? { ...q, required: !q.required } : q)));
+    // setSurvey(survey => qns.map((q, ind) => (i == ind ? { ...q, required: !q.required } : q)));
+    setSurvey(survey => {
+      survey.questions[index].required = !survey.questions[index].required;
+    });
   };
 
   // usuwa pytanie
   const removeQn = () => {
-    setQns(qns => qns.filter((q, ind) => i != ind));
+    setSurvey(survey => {
+      survey.questions.splice(index, 1);
+    });
   };
 
   return (
     <div className="container qn">
       <div className="qn-row">
         <div className="input-with-icon">
-          <input type={"text"} value={qns[i].label} onChange={setTitle} />
+          <input
+            type={"text"}
+            value={survey.questions[index].label}
+            onChange={setLabel}
+          />
           <PencilIcon className="h-6" />
         </div>
         <div className="flex">
@@ -66,12 +79,12 @@ const QuestionWrapper = ({ children, qns, setQns, i }: QuestionWrapperProps) => 
           <div className="mt-2">{children}</div>
           <div className="mt-7">
             <Checkbox
-              checked={qns[i].required}
+              checked={survey.questions[index].required}
               label={"Wymagane"}
               onClick={toggleRequired}
             />
           </div>
-          <p className="qn-type">{prettyQnType(qns[i].type)}</p>
+          <p className="qn-type">{prettyQnType(survey.questions[index].type)}</p>
         </>
       )}
     </div>

@@ -1,84 +1,83 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
 import { useImmer } from "use-immer";
-import { PencilIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import Switch from "./switch";
-import QuestionsMenu from "./menu";
-import Modal from "./modal";
+import { Survey } from "../types/Survey";
+import { initialSurvey } from "./initialValues";
 import useAuth from "../hooks/useAuth";
-import { Question, Survey } from "../types/Survey";
-import { DEFAULT_SHORT_QN } from "../data/defaultQns";
 import CreatorContext from "../contexts/CreatorContext";
-
-interface dateTypes {
-  from: string;
-  until: string;
-}
+import { useContext, useEffect, useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import PrimaryInputs from "./primaryInputs";
+import Questions from "./questions";
+import PublishModal from "./publishModal";
+import QuestionTypesMenu from "./questionTypesMenu";
+import AuthContext from "../contexts/AuthContext";
 
 const Creator = () => {
-  const [qns, setQns] = useImmer<Question[]>([DEFAULT_SHORT_QN]);
-  const [survey, setSurvey] = useState<Survey | null>(null);
-  const [dates, setDates] = useState<dateTypes>({ from: "", until: "" });
-  const [toggled, setToggled] = useState(false);
-  const [show, setShow] = useState(false);
+  const [survey, setSurvey] = useImmer<Survey>(initialSurvey);
+  const [showModal, setShowModal] = useState(false);
+  const [toggledMenu, setToggledMenu] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
-  const { user } = useAuth();
+  const auth = useContext(AuthContext);
+  if (!auth) return <></>;
+  const { user } = auth;
 
-  // REF DO TYTUŁU
-  const titleInputRef = useRef<HTMLInputElement>(null);
+  // USTAWIANIE ID UŻYTKOWNIKA W MOMENCIE GDY UŻYTKOWNIK NIE JEST NULL --- (BŁĄD PODCZAS LOGOWANIA)
+  useEffect(() => {
+    if (!user) return;
+    setSurvey(survey => {
+      survey.userID = user.id;
+    });
+  }, [user]);
+
+  // DEBUG --- CONSOLE.LOG()
+  // useEffect(() => console.log(survey), [survey]);
+
+  // DATA AKTYWACJI I DEZAKTYWACJI
+  const prettyDate = (n: number | string) => new Date(n).toISOString().slice(0, 10);
+  const { active_from, active_until } = survey;
+  const from = !active_from ? "?" : prettyDate(active_from);
+  const until = !active_until ? "?" : prettyDate(active_until);
 
   // WALIDACJA ANKIETY
-  const handleValidation = () => {
-    const freshErrs: string[] = [];
+  const handleSurveyValidation = () => {
+    const freshErrs = [];
 
-    // WALIDACJA
-    if (!titleInputRef.current || titleInputRef.current.value.length < 8)
-      freshErrs.push("Długośc tytułu musi wynosić co najmniej 8 znaków.");
-    if (dates.from.length == 0) freshErrs.push("Początek daty nie może być pusty.");
-    if (dates.until.length == 0) freshErrs.push("Koniec daty nie może być pusty.");
-    if (qns.some(qn => qn.label.length < 8))
-      freshErrs.push("Długośc tytułu każdego z pytań musi wynosić co najmniej 8 znaków.");
-    if (qns.some(qn => qn.limit < 2))
+    if (survey.title.trim().length < 5)
+      freshErrs.push("Długośc tytułu musi wynosić co najmniej 5 znaków.");
+    if (!survey.active_from) freshErrs.push("Początek daty nie może być pusty.");
+    if (!survey.active_until) freshErrs.push("Koniec daty nie może być pusty.");
+    if (survey.questions.some(qn => qn.label.trim().length < 5))
+      freshErrs.push("Długośc tytułu każdego z pytań musi wynosić co najmniej 5 znaków.");
+    if (survey.questions.some(qn => qn.limit < 2))
       freshErrs.push("Liczba limitu każdego z pytań musi wynosić co najmniej 2.");
 
-    // USTAWIANIE BŁĘDÓW
-    setErrors([...freshErrs]);
-    if (freshErrs.length == 0) setShow(true);
-
-    // SETTER
-    setSurvey({
-      title: titleInputRef.current?.value ?? "Tytuł ankiety",
-      active_from: +new Date(dates.from),
-      active_until: +new Date(dates.until),
-      userID: user?.id || "",
-      created_at: +new Date(),
-      questions: qns,
-    });
+    setErrors(freshErrs);
+    if (freshErrs.length > 0) return;
+    setShowModal(true);
   };
 
   return (
-    <CreatorContext.Provider value={{ qns, setQns, survey }}>
+    <CreatorContext.Provider value={{ survey, setSurvey }}>
       <section id="creator-wrapper">
         <section id="creator-options">
           <div id="qns-info">
-            <p>Ilość pytań {qns.length}</p>
+            <p>Ilość pytań {survey.questions.length}</p>
             <p>
-              {dates.from.length > 0 ? dates.from : "?"} -{" "}
-              {dates.until.length > 0 ? dates.until : "?"}
+              {from} - {until}
             </p>
           </div>
           <div id="options-buttons">
-            <button className="btn bg-indigo-700" onClick={handleValidation}>
+            <button className="btn bg-indigo-700" onClick={handleSurveyValidation}>
               Zakończ i opublikuj
             </button>
             <button
               className="btn bg-indigo-700 qns-prev"
-              onClick={() => setToggled(toggled => !toggled)}
+              onClick={() => setToggledMenu(!toggledMenu)}
             >
               Dodaj pytanie
             </button>
           </div>
-          <QuestionsMenu toggled={toggled} setToggled={setToggled} />
+          <QuestionTypesMenu toggled={toggledMenu} setToggled={setToggledMenu} />
         </section>
         <div id="creator-errors">
           {errors.map((err, i) => {
@@ -97,32 +96,9 @@ const Creator = () => {
             );
           })}
         </div>
-        <div id="primary-inputs">
-          <div className="input-with-icon">
-            <input type={"text"} defaultValue={"Jakis tekst"} ref={titleInputRef} />
-            <PencilIcon className="h-6" />
-          </div>
-          <div id="date-inputs-row">
-            <div className="input-with-row">
-              <label>Początek</label>
-              <input
-                type={"date"}
-                onChange={e => setDates({ ...dates, from: e.target.value })}
-              />
-            </div>
-            <div className="input-with-row">
-              <label>Koniec</label>
-              <input
-                type={"date"}
-                onChange={e => setDates({ ...dates, until: e.target.value })}
-              />
-            </div>
-          </div>
-        </div>
-        {qns.map((qn, i) => (
-          <Switch key={"qn" + i} i={i} />
-        ))}
-        <Modal show={show} setShow={setShow} />
+        <PrimaryInputs />
+        <Questions />
+        <PublishModal show={showModal} setShow={setShowModal} />
       </section>
     </CreatorContext.Provider>
   );

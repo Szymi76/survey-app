@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // hook do pobierania danych api - url
-const useFetch = <T>(method: string, url: string, send?: any, control = true) => {
+const useFetch = <T>(method: string, url: string, send?: any, control = false) => {
   const [data, setData] = useState<null | T>(null);
   const [error, setError] = useState<null | Error>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -13,7 +13,6 @@ const useFetch = <T>(method: string, url: string, send?: any, control = true) =>
 
   useEffect(() => {
     if (!fire) return;
-
     let unmounted = false;
     let source = axios.CancelToken.source();
 
@@ -48,7 +47,7 @@ const useFetch = <T>(method: string, url: string, send?: any, control = true) =>
     };
   }, [fire]);
 
-  const trigger = () => setFire(true);
+  const trigger = async () => setFire(true);
 
   return [data, error, loading, trigger] as const;
 };
