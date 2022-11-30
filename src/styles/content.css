@@ -1,71 +1,101 @@
 /*////////// nav \\\\\\\\\\*/
 
 nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 20;
-    background-color: var(--indigo);
-    height: 4rem;
-    width: 100%;
-    color: var(--white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.75rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: var(--indigo);
+  height: 4rem;
+  width: 100%;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.75rem;
 }
 nav a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .25rem;
-    font-size: large;
-    font-weight: 500;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
 }
 nav #details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 nav #details img {
-    height: 2.5rem;
-    border-radius: 9999px;
+  height: 2.5rem;
+  border-radius: 9999px;
 }
 nav #details h3 {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+/*/ ///////// user menu \\\\\\\\\\*/
+#user-menu {
+  position: fixed;
+  top: 0;
+  right: -18rem;
+  z-index: 10;
+  padding: 5rem 1rem 3rem 1rem;
+  height: 100vh;
+  width: 18rem;
+  background-color: var(--white);
+  border-left: 1px solid var(--gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition-duration: 200ms;
+}
+#user-menu p {
+  color: var(--dark-gray);
+}
+#user-menu #log-out:hover {
+  color: var(--indigo) !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.user-menu-toggled {
+  transform: translateX(-18rem);
 }
 
 /*////////// container \\\\\\\\\\*/
 
 .container {
-    position: relative;
-    width: 95%;
-    max-width: 1000px;
-    border: 1px solid var(--gray);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    background-color: var(--white);
-    margin: 0 auto;
+  position: relative;
+  width: 95%;
+  max-width: 1000px;
+  border: 1px solid var(--gray);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  background-color: var(--white);
+  margin: 0 auto;
 }
 
-/*////////// footer \\\\\\\\\\*/
+/*/ ///////// footer \\\\\\\\\\*/
 footer {
-    background-color: var(--indigo);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 7rem;
-    gap: 1rem;
+  background-color: var(--indigo);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 7rem;
+  gap: 1rem;
 }
 footer div {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 footer figure {
-    display: flex;
-    gap: .5rem;
-    height: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  height: 1.5rem;
 }
