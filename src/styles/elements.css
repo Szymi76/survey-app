@@ -140,12 +140,13 @@
   border: 2px solid var(--indigo);
   border-radius: var(--radius);
   overflow: hidden;
-  width: min-content;
+  max-width: 22rem;
 }
 .input-with-button input {
   outline: none;
   padding: 0.45rem 1rem;
   border-right: 2px solid var(--indigo);
+  width: 100%;
 }
 .input-with-button button {
   color: var(--white);
@@ -170,13 +171,14 @@
   gap: 0.5rem;
   font-size: large;
   font-weight: 500;
+  max-width: 30rem;
 }
 .input-with-icon input {
   background-color: transparent;
   width: min-content;
   outline: none;
   border-bottom: 2px solid transparent;
-  /* padding: 1rem 0; */
+  width: 100%;
 }
 .input-with-icon input:focus {
   border-bottom: 2px solid black;

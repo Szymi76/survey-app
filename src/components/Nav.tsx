@@ -1,8 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  DocumentTextIcon,
-  EllipsisVerticalIcon,
-} from "@heroicons/react/24/solid";
+import { DocumentTextIcon, EllipsisVerticalIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import AuthContext from "../contexts/AuthContext";
@@ -26,23 +23,27 @@ const Nav = () => {
           <h1>Ankieta na teraz</h1>
         </Link>
         <div id="details">
-          <EllipsisVerticalIcon
-            className="h-8"
-            onClick={() => setToggled(!toggled)}
-          />
           {user ? (
             <>
-              <img src={user?.photoURL} alt="profile image" />
+              <img
+                src={user?.photoURL}
+                alt="profile image"
+                className="cursor-pointer"
+                onClick={() => setToggled(!toggled)}
+              />
             </>
           ) : (
-            // <h3 onClick={async () => await logIn("szymonkrupa2@o2.pl", "1qaz@WSX")}>
-            //   Zaloguj się
-            // </h3>
-            <h3 onClick={() => navigate("/auth")}>Zaloguj się</h3>
+            <h3 className="hidden sm:block" onClick={() => navigate("/auth")}>
+              Zaloguj się
+            </h3>
           )}
+          <EllipsisVerticalIcon
+            className="h-8 cursor-pointer"
+            onClick={() => setToggled(!toggled)}
+          />
         </div>
       </nav>
-      <UserMenu toggled={toggled} />
+      <UserMenu toggled={toggled} setToggled={setToggled} />
     </>
   );
 };

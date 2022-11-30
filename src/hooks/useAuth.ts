@@ -11,7 +11,9 @@ import User from "../types/User";
 // aktualizacja nazwy użytkownika
 // aktualizacja zdjęcie profilowego
 
-const PREFIX = `${location.origin}/api/auth/`;
+// const PREFIX = `${location.origin}/api/auth/`;
+// const PREFIX = `http://localhost:3000/api/auth/`;
+const PREFIX = `http://192.168.1.10:3000/api/auth/`;
 const CREATE_ACCOUNT_PATH = "create-account";
 const LOGIN_PATH = "login";
 const GET_USER_PATH = "user/";

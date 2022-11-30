@@ -58,12 +58,12 @@ const QuestionWrapper = ({ children, index }: QuestionWrapperProps) => {
           <span>
             {toggled ? (
               <ChevronUpIcon
-                className="h-8 cursor-pointer"
+                className="h-8 cursor-pointer hover:text-indigo-700"
                 onClick={() => setToggled(!toggled)}
               />
             ) : (
               <ChevronDownIcon
-                className="h-8 cursor-pointer"
+                className="h-8 cursor-pointer hover:text-indigo-700"
                 onClick={() => setToggled(!toggled)}
               />
             )}
@@ -76,15 +76,15 @@ const QuestionWrapper = ({ children, index }: QuestionWrapperProps) => {
       </div>
       {toggled && (
         <>
-          <div className="mt-2">{children}</div>
-          <div className="mt-7">
+          <div className="mt-6">{children}</div>
+          <div className="mt-7 flex justify-between items-end flex-wrap gap-3">
             <Checkbox
               checked={survey.questions[index].required}
               label={"Wymagane"}
               onClick={toggleRequired}
             />
+            <p className="qn-type">{prettyQnType(survey.questions[index].type)}</p>
           </div>
-          <p className="qn-type">{prettyQnType(survey.questions[index].type)}</p>
         </>
       )}
     </div>

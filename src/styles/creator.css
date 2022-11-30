@@ -34,11 +34,12 @@
 .qn-row {
     display: flex;
     justify-content: space-between;
+    /* margin-bottom: 1.5rem; */
 }
 .qn-type {
-    position: absolute;
-    right: 1.25rem;
-    bottom: 1.25rem;
+    /* position: absolute; */
+    /* right: 1.25rem;
+    bottom: 1.25rem; */
     color: var(--dark-gray);
     font-size: small;
 }
@@ -69,6 +70,7 @@
     align-items: center;
     padding: 0 1rem;
     overflow: hidden;
+    border-bottom: 1px solid var(--gray);
 }
 #qns-info {
     display: flex;
@@ -190,6 +192,7 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
     gap: .75rem;
 }
 

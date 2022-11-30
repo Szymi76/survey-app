@@ -10,7 +10,8 @@ import CreatorContext from "../contexts/CreatorContext";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
-const POST_URL = `${location.origin}/api/survey/upload-survey`;
+// const POST_URL = `${location.origin}/api/survey/upload-survey`;
+const POST_URL = `http://localhost:3000/api/survey/upload-survey`;
 
 type PublishModalProps = {
   show: boolean;
@@ -81,12 +82,7 @@ const PublishModal = ({ show, setShow }: PublishModalProps) => {
             <div className="publish-row">
               {!loading ? (
                 <>
-                  {error && (
-                    <h3 className="absolute text-red-500 bottom-1 left-1">
-                      {" "}
-                      Coś poszło nie tak
-                    </h3>
-                  )}
+                  {error && <h3 className=" text-red-500 w-full">Coś poszło nie tak</h3>}
 
                   <button className="btn bg-red-500" onClick={() => setShow(false)}>
                     Cofnij

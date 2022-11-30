@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import SurveyPage from "./Survey";
 import Creator from "./Creator";
-import Auth from "./components/Auth";
+// import Auth from "./components/Auth";
+import Auth from "./Auth";
 
 function App() {
   return (

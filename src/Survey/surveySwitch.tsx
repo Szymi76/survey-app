@@ -6,7 +6,8 @@ import { Answer, Answers as AnswersType, Question, Survey } from "../types/Surve
 import Answers from "./answers";
 import ThanksModal from "./thanksModal";
 
-const POST_URL = `${location.origin}/api/survey/upload-answer/`;
+// const POST_URL = `${location.origin}/api/survey/upload-answer/`;
+const POST_URL = `http://localhost:3000/api/survey/upload-answer/`;
 
 const SurveySwitch = ({ answersList }: { answersList: AnswersType }) => {
   const [done, setDone] = useState<string | null>(null);
