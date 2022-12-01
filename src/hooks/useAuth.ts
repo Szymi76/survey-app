@@ -4,21 +4,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../firebase/index";
 import axios from "axios";
 import User from "../types/User";
-
-// tworzenie nowego uzytkownika
-// logowanie
-// pobieranie użytkownika po tokenie
-// aktualizacja nazwy użytkownika
-// aktualizacja zdjęcie profilowego
-
-// const PREFIX = `${location.origin}/api/auth/`;
-// const PREFIX = `http://localhost:3000/api/auth/`;
-const PREFIX = `http://192.168.1.10:3000/api/auth/`;
-const CREATE_ACCOUNT_PATH = "create-account";
-const LOGIN_PATH = "login";
-const GET_USER_PATH = "user/";
-const UPDATE_USER_PROFILE_IMAGE_PATH = "update-user-profile-image";
-const UPDATE_USER_DISPLAY_NAME_PATH = "update-user-display-name";
+import API from "../api";
 
 type stateTypes = {
   user: null | User;
@@ -75,7 +61,7 @@ const useAuth = () => {
   const createAccount = async (displayName: string, email: string, password: string) => {
     try {
       start();
-      const { data } = await axios.post(`${PREFIX}${CREATE_ACCOUNT_PATH}`, {
+      const { data } = await axios.post(API.CREATE_ACCOUNT_URL, {
         displayName,
         email,
         password,
@@ -99,7 +85,7 @@ const useAuth = () => {
   const logIn = async (email: string, password: string) => {
     try {
       start();
-      const { data } = await axios.post(`${PREFIX}${LOGIN_PATH}`, {
+      const { data } = await axios.post(API.LOGIN_URL, {
         email,
         password,
       });
@@ -122,7 +108,7 @@ const useAuth = () => {
     try {
       start();
       const token = localStorage.getItem("token");
-      const { data } = await axios.get(`${PREFIX}${GET_USER_PATH}`, {
+      const { data } = await axios.get(API.GET_USER_URL, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -154,7 +140,7 @@ const useAuth = () => {
       const upload = await uploadBytes(storageRef, file);
       const url = await getDownloadURL(upload.ref);
       const { data } = await axios.patch(
-        `${PREFIX}${UPDATE_USER_PROFILE_IMAGE_PATH}`,
+        API.UPDATE_USER_PROFILE_IMAGE_URL,
         { photoURL: url },
         { headers: { Authorization: `Bearer ${state.user.token}` } }
       );
@@ -172,7 +158,7 @@ const useAuth = () => {
       start();
       if (!state.user) return failure();
       const { data } = await axios.patch(
-        `${PREFIX}${UPDATE_USER_DISPLAY_NAME_PATH}`,
+        API.UPDATE_USER_DISPLAY_NAME_URL,
         { displayName },
         { headers: { Authorization: `Bearer ${state.user.token}` } }
       );

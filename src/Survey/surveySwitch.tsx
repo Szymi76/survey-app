@@ -5,16 +5,14 @@ import useFetch from "../hooks/useFetch";
 import { Answer, Answers as AnswersType, Question, Survey } from "../types/Survey";
 import Answers from "./answers";
 import ThanksModal from "./thanksModal";
-
-// const POST_URL = `${location.origin}/api/survey/upload-answer/`;
-const POST_URL = `http://localhost:3000/api/survey/upload-answer/`;
+import API from "../api";
 
 const SurveySwitch = ({ answersList }: { answersList: AnswersType }) => {
   const [done, setDone] = useState<string | null>(null);
   // UPLOAD ODPOWIEDZI NA ANKIETE DO BAZY DANYCH
   const [uploadResult, uploadErr, uploadLoading, uploadAnswer] = useFetch<Survey>(
     "POST",
-    `${POST_URL}`,
+    API.UPLOAD_ANSWER_URL,
     answersList,
     true
   );

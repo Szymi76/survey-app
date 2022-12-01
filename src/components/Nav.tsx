@@ -33,7 +33,12 @@ const Nav = () => {
               />
             </>
           ) : (
-            <h3 className="hidden sm:block" onClick={() => navigate("/auth")}>
+            <h3
+              className="hidden sm:block"
+              onClick={() =>
+                navigate("/auth", { state: { page: "login", redirect: location.hash } })
+              }
+            >
               Zaloguj się
             </h3>
           )}

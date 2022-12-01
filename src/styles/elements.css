@@ -22,6 +22,9 @@
 .btn-long {
   width: 10rem !important;
 }
+.btn-full {
+  width: 100% !important;
+}
 /*////////// input \\\\\\\\\\*/
 
 .input {
@@ -182,4 +185,29 @@
 }
 .input-with-icon input:focus {
   border-bottom: 2px solid black;
+}
+
+/*////////// input with label \\\\\\\\\\*/
+.input-with-label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+.input-with-label label{
+  
+}
+.input-with-label input {
+  border: 1px solid var(--gray);
+  outline: none;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+}
+.input-with-label input:hover {
+ background-color: var(--light-gray);
+ transition-duration: 100ms;
+}
+.input-with-label input:focus {
+  border: 2px solid var(--indigo);
+  padding: calc(0.45rem - 1px) calc(1rem - 1px);
+  transition-duration: 30ms;
 }

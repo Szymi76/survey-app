@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import {
   ClipboardDocumentIcon,
@@ -9,9 +8,7 @@ import { Survey } from "../types/Survey";
 import CreatorContext from "../contexts/CreatorContext";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
-
-// const POST_URL = `${location.origin}/api/survey/upload-survey`;
-const POST_URL = `http://localhost:3000/api/survey/upload-survey`;
+import API from "../api";
 
 type PublishModalProps = {
   show: boolean;
@@ -28,7 +25,7 @@ const PublishModal = ({ show, setShow }: PublishModalProps) => {
   // PRZESYŁANIE ANKIETY W MOMENCIE WYWOŁANIA FUNKCJI 'publishSurvey'
   const [data, error, loading, publishSurvey] = useFetch<Survey>(
     "POST",
-    POST_URL,
+    API.UPLOAD_SURVEY_URL,
     survey,
     true
   );

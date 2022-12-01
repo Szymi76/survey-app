@@ -7,13 +7,11 @@ import { useImmer } from "use-immer";
 import SurveyContext from "../contexts/SurveyContext";
 import SurveySwitch from "./surveySwitch";
 import SurveyNotFound from "./surveyNotFound";
-
-// const GET_URL = `${location.origin}/api/survey/`;
-const GET_URL = `http://localhost:3000/api/survey/`;
+import API from "../api";
 
 const SurveyPage = () => {
   const { id } = useParams();
-  const [survey, error, loading] = useFetch<Survey>("GET", `${GET_URL}${id}`);
+  const [survey, error, loading] = useFetch<Survey>("GET", `${API.GET_SURVEY_URL}${id}`);
   const [answers, setAnswers] = useImmer<Answer[]>([]);
 
   // DEBUG -- CONSOLE.LOG()
