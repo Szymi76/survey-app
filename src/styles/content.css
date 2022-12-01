@@ -30,6 +30,7 @@ nav #details {
 }
 nav #details img {
   height: 2.5rem;
+  width: 2.5rem;
   border-radius: 9999px;
 }
 nav #details h3 {

@@ -8,11 +8,10 @@ import AuthContext from "../contexts/AuthContext";
 const Auth = () => {
   const { state } = useLocation(); // page, redirect
   const [page, setPage] = useState<"login" | "create-account">(state?.page ?? "login");
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
   if (!auth) return <></>;
-  const { user } = auth;
+  const { user, loading } = auth;
 
   // ŚCIEŻKA PZEKIEROWANIA
   const redirect = state?.redirect.replaceAll("#/", "") ?? "";
@@ -50,8 +49,8 @@ const Auth = () => {
           }
         >
           <div id="pages-container">
-            <Login setLoading={setLoading} />
-            <CreateAccount setLoading={setLoading} />
+            <Login />
+            <CreateAccount />
           </div>
         </div>
         {loading && (

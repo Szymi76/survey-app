@@ -13,6 +13,7 @@ import "./styles/home.css";
 import "./styles/creator.css";
 import "./styles/survey.css";
 import "./styles/auth.css";
+import "./styles/settings.css";
 
 import AuthProvider from "./providers/AuthProvider";
 

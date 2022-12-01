@@ -13,6 +13,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     getUser,
     updateDisplayName,
     updateProfileImage,
+    deleteUser,
   } = useAuth();
 
   return (
@@ -27,6 +28,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         getUser,
         updateDisplayName,
         updateProfileImage,
+        deleteUser,
       }}
     >
       {children}

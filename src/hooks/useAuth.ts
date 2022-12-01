@@ -7,13 +7,13 @@ import User from "../types/User";
 import API from "../api";
 
 type stateTypes = {
-  user: null | User;
+  user: null | undefined | User;
   loading: boolean;
   error: null | Error;
 };
 
 const initialState = {
-  user: null,
+  user: undefined,
   loading: false,
   error: null,
 };
@@ -118,9 +118,11 @@ const useAuth = () => {
         localStorage.setItem("token", data.token);
       } else {
         failure();
+        updateUser(null);
       }
     } catch (err) {
       success();
+      updateUser(null);
       console.warn(err);
     }
   };
@@ -170,6 +172,22 @@ const useAuth = () => {
     }
   };
 
+  const deleteUser = async () => {
+    try {
+      start();
+      if (!state.user) return failure();
+      await axios.delete(API.DELETE_USER_URL, {
+        headers: { Authorization: `Bearer ${state.user.token}` },
+      });
+      success();
+      localStorage.removeItem("token");
+      updateUser(null);
+    } catch (err) {
+      failure();
+      console.warn(err);
+    }
+  };
+
   const { user, loading, error } = state;
 
   return {
@@ -182,6 +200,7 @@ const useAuth = () => {
     logOut,
     updateProfileImage,
     updateDisplayName,
+    deleteUser,
   } as const;
 };
 

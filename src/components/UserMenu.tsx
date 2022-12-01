@@ -51,7 +51,7 @@ const UserMenu = ({ toggled, setToggled }: UserMenuProps) => {
           </>
         ) : (
           <div className="flex flex-wrap gap-2 justify-center">
-            <button className="btn bg-indigo-700">
+            <button className="btn btn-long bg-indigo-700">
               <Link
                 to={"/auth"}
                 state={{ page: "create-account", redirect: location.hash }}
@@ -59,7 +59,7 @@ const UserMenu = ({ toggled, setToggled }: UserMenuProps) => {
                 Stwórz konto
               </Link>
             </button>
-            <button className="btn bg-indigo-700">
+            <button className="btn btn-long bg-indigo-700">
               <Link to={"/auth"} state={{ page: "login", redirect: location.hash }}>
                 Zaloguj się
               </Link>

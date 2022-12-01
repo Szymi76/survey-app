@@ -2,10 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import AuthContext from "../contexts/AuthContext";
 
-type LoginProps = {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 const initialState = {
   displayName: "",
   email: "",
@@ -13,18 +9,13 @@ const initialState = {
   correctPassword: "",
 };
 
-const CreateAccount = ({ setLoading }: LoginProps) => {
+const CreateAccount = () => {
   const [data, setData] = useImmer(initialState);
   const auth = useContext(AuthContext);
   const [localError, setLocalError] = useState<null | string>(null);
 
   if (!auth) return <></>;
   const { createAccount, loading, error } = auth;
-
-  // USTAWIANIE GLOBALNEGO ŁADOWANIA
-  useEffect(() => {
-    setLoading(loading);
-  }, [loading]);
 
   // VALIDACJA I TWORZENIE KONTA
   const handleCreateAccount = async (e: any) => {

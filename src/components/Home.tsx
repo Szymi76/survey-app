@@ -36,7 +36,7 @@ const Home = () => {
         <img src={IlustrationImage} alt="Form image" />
       </section>
       <section id="url">
-        <h1>Adres URL ankiety</h1>
+        <h1>Przejdź do ankiety</h1>
         <div className="container">
           <div id="home-url-input">
             <div>ID</div>
@@ -45,11 +45,16 @@ const Home = () => {
           </div>
         </div>
         <p>
-          Należy umieścić skopiowany adres URL ankiety, a następnie nacisnąć{" "}
-          <span className="text-indigo-700">Przejdź</span> aby znaleść się w ankiecie.
+          Należy umieścić <span className="text-indigo-700">id</span> ankiety, a następnie
+          nacisnąć <span className="text-indigo-700">Przejdź</span> aby znaleść się w
+          ankiecie{" "}
+          <span className="underline">
+            Jeśli posiadasz cały link, podmień go w pasku przeglądarki
+          </span>
+          .
           {error && (
             <h6 className="text-red-500 text-left mt-2">
-              * ID zostało wpisane błędnie *
+              ID ankiety zostało wpisane błędnie
             </h6>
           )}
         </p>

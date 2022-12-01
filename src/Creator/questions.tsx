@@ -41,6 +41,9 @@ const Questions = () => {
 
   // DODAWANIE ELEMENTU DO LISTY
   const addToList = (value: string, index: number) => {
+    const list = survey.questions[index].list;
+    if (value.length == 0 || list.length == 10) return;
+
     setSurvey(survey => {
       survey.questions[index].list.push(value);
     });
@@ -48,6 +51,9 @@ const Questions = () => {
 
   // USUWANIE ELEMENU Z LISTY
   const removeFromList = (listInd: number, index: number) => {
+    const list = survey.questions[index].list;
+    if (list.length == 1) return;
+
     setSurvey(survey => {
       survey.questions[index].list.splice(listInd, 1);
     });

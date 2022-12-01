@@ -2,26 +2,17 @@ import React, { useContext, useEffect } from "react";
 import { useImmer } from "use-immer";
 import AuthContext from "../contexts/AuthContext";
 
-type LoginProps = {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 const initialState = {
   email: "",
   password: "",
 };
 
-const Login = ({ setLoading }: LoginProps) => {
+const Login = () => {
   const [data, setData] = useImmer(initialState);
   const auth = useContext(AuthContext);
 
   if (!auth) return <></>;
   const { logIn, loading, error } = auth;
-
-  // USTAWIANIE GLOBALNEGO ŁADOWANIA
-  useEffect(() => {
-    setLoading(loading);
-  }, [loading]);
 
   // LOGOWANIE
   const handleLogIn = async (e: any) => {
