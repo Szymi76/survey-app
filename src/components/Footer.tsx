@@ -6,15 +6,18 @@ const Footer = () => {
     <footer>
       <p>Ankieta na teraz - wszystkie prawa zastrzeżone.</p>
       <div>
-        <figure>
+        <a href="https://github.com/Szymi76/survey-app-2.0" target={"_blank"}>
           <img src={GithubLogo} alt="github logo" />
           <p>Github</p>
-        </figure>
+        </a>
         <span>|</span>
-        <figure>
+        <a
+          href="https://www.figma.com/file/WkmbpZJGX4KYsdNoPuoUJT/Ankieta-na-teraz?t=k0wezkJTgA1O3sB4-0"
+          target={"_blank"}
+        >
           <img src={FigmaLogo} alt="figma logo" />
           <p>Figma</p>
-        </figure>
+        </a>
       </div>
     </footer>
   );

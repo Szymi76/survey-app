@@ -17,7 +17,7 @@ const Settings = () => {
   // PRZEKIEROWANIE JEŚLI UZYTKOWNIK JEST NIE ZALOGOWANY
   useEffect(() => {
     if (user === null)
-      navigate("/auth", { state: { page: "login", redirect: location.hash } });
+      navigate("/auth", { state: { page: "login", redirect: "ustawienia" } });
   }, [user]);
 
   // RESETOWANIE INFORMACJI O POPRAWNYM ZAPISIE

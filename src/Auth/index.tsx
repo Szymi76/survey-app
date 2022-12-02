@@ -15,10 +15,8 @@ const Auth = () => {
 
   // ŚCIEŻKA PZEKIEROWANIA
   const redirect = state?.redirect.replaceAll("#/", "") ?? "";
-
   useEffect(() => {
     if (user) navigate(`/${redirect}`);
-    console.log(user);
   }, [user]);
 
   return (

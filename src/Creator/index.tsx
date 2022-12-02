@@ -10,6 +10,7 @@ import Questions from "./questions";
 import PublishModal from "./publishModal";
 import QuestionTypesMenu from "./questionTypesMenu";
 import AuthContext from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Creator = () => {
   const [survey, setSurvey] = useImmer<Survey>(initialSurvey);
@@ -17,12 +18,16 @@ const Creator = () => {
   const [toggledMenu, setToggledMenu] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
+  const navigate = useNavigate();
+
   const auth = useContext(AuthContext);
   if (!auth) return <></>;
   const { user } = auth;
 
-  // USTAWIANIE ID UŻYTKOWNIKA W MOMENCIE GDY UŻYTKOWNIK NIE JEST NULL --- (BŁĄD PODCZAS LOGOWANIA)
+  // USTAWIANIE ID UŻYTKOWNIKA W MOMENCIE GDY UŻYTKOWNIK NIE JEST NULL ORAZ PRZKIEROWANIE NIEZALOGOWANEGO UŻYTKOWNIKA
   useEffect(() => {
+    if (user === null)
+      navigate("/auth", { state: { page: "login", redirect: "kreator" } });
     if (!user) return;
     setSurvey(survey => {
       survey.userID = user.id;

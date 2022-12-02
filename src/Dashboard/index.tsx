@@ -20,7 +20,7 @@ const Dashboard = () => {
   // PRZEKIEROWANIE JEŚLI UZYTKOWNIK JEST NIE ZALOGOWANY
   useEffect(() => {
     if (user === null)
-      navigate("/auth", { state: { page: "login", redirect: location.hash } });
+      navigate("/auth", { state: { page: "login", redirect: "dashboard" } });
   }, [user]);
 
   if (surveys && surveys.length === 0)

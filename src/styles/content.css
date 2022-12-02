@@ -97,7 +97,7 @@ footer div {
   display: flex;
   gap: 1rem;
 }
-footer figure {
+footer a {
   display: flex;
   gap: 0.5rem;
   height: 1.5rem;
