@@ -11,30 +11,40 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-
+    /* animation: fade-in 750ms; */
 }
 #front div h1 {
     font-size: 4rem;
     font-weight: 500;
     color: var(--indigo);
+    animation: fade-in 600ms;
 }
 #front div h2 {
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--black);
+    animation: fade-in 700ms;
 }
 #front div h4 {
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--dark-gray);
+    animation: fade-in 800ms;
 }
 #front div span {
     display: flex;
     gap: .75rem;
+    animation: fade-in 900ms;
 }
 #front img {
     width: 35%;
     object-fit: contain;
+    animation: fade-in 1000ms;
+}
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(-50px);}
+    10% { opacity: .25; transform: translateY(-50px);}
+    100% { opacity: 1; transform: translateY(0);}
 }
 
 @media (max-width: 1050px) {

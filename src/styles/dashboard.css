@@ -1,0 +1,62 @@
+#survey-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 1rem;
+}
+.survey-card {
+    width: 95%;
+    max-width: 325px;
+    height: 400px;
+    border: 3px solid var(--indigo);
+    border-radius: var(--radius);
+}
+.survey-card-header {
+    height: 25%;
+    font-size: x-large;
+    font-weight: 500;
+    margin: 0 .5rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--gray);
+}
+.survey-card-content {
+    position: relative;
+    height: 65%;
+    padding: 2rem .5rem;
+}
+.survey-card-content span {
+    display: flex;
+    gap: .5rem;
+    color: var(--dark-gray);
+    font-size: large;
+    /* font-weight: 300; */
+    margin-bottom: .75rem;
+}
+.survey-card-footer {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    background-color: var(--indigo);
+    color: var(--white);
+}
+.survey-card-footer div {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 300;
+    font-size: small;
+}
+.survey-card-copy-row {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 1rem !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: small !important;
+    padding: 0 .35rem;
+    color: var(--indigo) !important;
+}

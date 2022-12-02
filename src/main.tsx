@@ -14,6 +14,7 @@ import "./styles/creator.css";
 import "./styles/survey.css";
 import "./styles/auth.css";
 import "./styles/settings.css";
+import "./styles/dashboard.css";
 
 import AuthProvider from "./providers/AuthProvider";
 
