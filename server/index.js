@@ -26,6 +26,11 @@ app.use(express.static(path.join(__dirname, "..", "dist")));
 app.use("/api/auth", authRouter);
 app.use("/api/survey", surveyRouter);
 
+// PRZEKIEROWANIE DO STRONY GŁÓWNEJ GDY DANA ŚCIEŻKA NIE ISTNIEJE
+app.get("*", (req, res) => {
+  res.redirect("/");
+});
+
 // POŁĄCZENIE Z MONGODB
 mongoose
   .connect(process.env.MONGO_DB_CONN)

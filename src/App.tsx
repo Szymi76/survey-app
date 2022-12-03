@@ -5,6 +5,8 @@ import Creator from "./Creator";
 import Settings from "./Settings";
 import Auth from "./Auth";
 import Dashboard from "./Dashboard";
+import PageNotFound from "./components/PageNotFound";
+import Stats from "./Stats";
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
       <Route path="/auth" element={<Auth />} />
       <Route path="/ustawienia" element={<Settings />} />
       <Route path="/dashboard" element={<Dashboard />} />
-
-      <Route path="*" element={<h1>404 | Nie znaleziono</h1>} />
+      <Route path="/statystyki/:id" element={<Stats />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 }

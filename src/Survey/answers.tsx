@@ -3,7 +3,7 @@ import { Answer, qnTypes, Question } from "../types/Survey";
 import YesNo from "./Answers/yesNo";
 import Single from "./Answers/single";
 import Multi from "./Answers/multi";
-import Short from "./Answers/long";
+import Short from "./Answers/short";
 import Long from "./Answers/long";
 import SurveyContext from "../contexts/SurveyContext";
 import AnswersContext from "../contexts/AnswersContext";

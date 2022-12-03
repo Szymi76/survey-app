@@ -13,6 +13,7 @@ const UPLOAD_ANSWER_URL = `${ORIGIN}survey/upload-answer`;
 const GET_SURVEY_URL = `${ORIGIN}survey/`;
 const DELETE_SURVEY_URL = `${ORIGIN}survey/delete/`;
 const GET_ALL_SURVEYS = `${ORIGIN}survey/all-user-surveys`;
+const GET_ALL_SURVEY_ANSWERS_URL = `${ORIGIN}survey/all-answers/`;
 
 export default {
   CREATE_ACCOUNT_URL,
@@ -27,4 +28,5 @@ export default {
   DELETE_USER_URL,
   DELETE_SURVEY_URL,
   GET_ALL_SURVEYS,
+  GET_ALL_SURVEY_ANSWERS_URL,
 };

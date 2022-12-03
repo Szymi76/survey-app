@@ -30,7 +30,9 @@ const Home = () => {
             <Link to={"/kreator"}>
               <button className="btn bg-indigo-700 btn-rounded">Stwórz</button>
             </Link>
-            <button className="btn bg-indigo-700 btn-rounded">Adres URL</button>
+            {/* <a href="#url">
+              <button className="btn bg-indigo-700 btn-rounded">Adres URL</button>
+            </a> */}
           </span>
         </div>
         <img src={IlustrationImage} alt="Form image" />

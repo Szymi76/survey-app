@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import AuthContext from "../contexts/AuthContext";
 
@@ -10,6 +10,7 @@ const initialState = {
 const Login = () => {
   const [data, setData] = useImmer(initialState);
   const auth = useContext(AuthContext);
+  const [localError, setLocalError] = useState<null | string>(null);
 
   if (!auth) return <></>;
   const { logIn, loading, error } = auth;
@@ -17,6 +18,12 @@ const Login = () => {
   // LOGOWANIE
   const handleLogIn = async (e: any) => {
     e.preventDefault();
+    let freshError = null;
+    if (Object.values(data).some(val => val.trim() == ""))
+      freshError = "Wszystkie powyższe pola są wymagane";
+
+    setLocalError(freshError);
+    if (freshError) return;
     await logIn(data.email, data.password);
   };
 
@@ -44,7 +51,8 @@ const Login = () => {
         </div>
 
         <button className="btn bg-indigo-700 btn-full">Zaloguj się</button>
-        {error && <p className="text-red-500 mt-2">Coś poszło nie tak</p>}
+        {localError && <p className="text-red-500 mt-2">{localError}</p>}
+        {error && !localError && <p className="text-red-500 mt-2">Coś poszło nie tak</p>}
       </form>
     </div>
   );

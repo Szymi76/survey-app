@@ -38,5 +38,11 @@ interface Survey {
   active_until: number | string;
 }
 
-export type { Survey, Question, Answers, Answer };
+interface GroupedAnswers {
+  label: string;
+  type: qnTypes;
+  list: { label: string; count: number }[];
+}
+
+export type { Survey, Question, Answers, Answer, GroupedAnswers };
 export { qnTypes };

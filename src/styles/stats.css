@@ -1,0 +1,46 @@
+#stats-wrapper {
+    position: relative;
+    padding: 6rem 0;
+    width: 95%;
+    width: 100%;
+    background-color: var(--light-gray);
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+#stats-header {
+    position: relative;
+    width: 95%;
+    max-width: 1000px;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    background-color: var(--indigo);
+    margin: 0 auto;
+    color: var(--white);
+}
+#stats-answers-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin-top: 3rem;
+}
+.stats-table {
+    border: 1px solid var(--gray);
+    margin: 2rem auto;
+}
+.stats-table tr {
+    border: 1px solid var(--gray);
+}
+.stats-table th {
+    border: 1px solid var(--gray);
+    padding: .5rem;
+    background-color: var(--light-gray);
+}
+.stats-table td {
+    border: 1px solid var(--gray);
+    padding: .5rem;
+}
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+}

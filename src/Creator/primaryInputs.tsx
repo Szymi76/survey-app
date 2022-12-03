@@ -30,11 +30,11 @@ const PrimaryInputs = () => {
       </div>
       <div id="date-inputs-row">
         <div className="input-with-row">
-          <label>Początek</label>
+          <label>Aktywna od</label>
           <input type={"date"} name="active_from" onChange={handleOnChange} />
         </div>
         <div className="input-with-row">
-          <label>Koniec</label>
+          <label>Aktywna do</label>
           <input type={"date"} name="active_until" onChange={handleOnChange} />
         </div>
       </div>

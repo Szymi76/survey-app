@@ -58,15 +58,11 @@ const SurveyCard = ({ survey, setSurveyId }: SurveyCardProps) => {
         </span>
         <span>
           <CalendarDaysIcon className="h-7" />
-          <p>
-            Data aktywacji - {new Date(survey.active_from).toISOString().slice(0, 10)}
-          </p>
+          <p>Aktywna od - {new Date(survey.active_from).toISOString().slice(0, 10)}</p>
         </span>
         <span>
           <CalendarDaysIcon className="h-7" />
-          <p>
-            Data aktywacji - {new Date(survey.active_until).toISOString().slice(0, 10)}
-          </p>
+          <p>Aktywna do - {new Date(survey.active_until).toISOString().slice(0, 10)}</p>
         </span>
         <span className="survey-card-copy-row">
           <div className="flex gap-3">
