@@ -4,3 +4,4 @@
 4. Zrobienie podstrony dotyczącej jak zrobić ankiete.
 5. Obsugiwanie błędnych url-li od strony serwera. [ZROBIONE]
 6. Błąd w statystykach dotyczący pytania "tak/nie" - elementy są błędnie zliczane.
+7. Dodać czy właściwy użytkownik jest zalogowany w statystykach "/statystyki/:id".
