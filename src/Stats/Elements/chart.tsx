@@ -32,8 +32,9 @@ const Chart = ({ type, answer }: ChartProps) => {
   const data = answer.list.map(item => item.count);
   let labels = answer.list.map(item => item.label);
 
-  if (answer.type == qnTypes.YES_NO)
-    labels = labels.map(label => (label == "yes" ? "Tak" : "Nie"));
+  console.log(answer);
+  // if (answer.type == qnTypes.YES_NO)
+  //   labels = labels.map(label => (label == "yes" ? "Tak" : "Nie"));
 
   const chartData = {
     labels: labels,
@@ -63,14 +64,10 @@ const Chart = ({ type, answer }: ChartProps) => {
       },
     ],
   };
-
+  console.log();
   return (
     <div className="max-w-[500px] mx-auto my-5">
-      {type == "bar" ? (
-        <Bar style={{ width: 300 }} data={chartData} />
-      ) : (
-        <Pie data={chartData} />
-      )}
+      {type == "bar" ? <Bar data={chartData} /> : <Pie data={chartData} />}
     </div>
   );
 };

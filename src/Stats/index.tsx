@@ -36,7 +36,7 @@ const Stats = () => {
     });
 
     return grouped.reduce((total: GroupedAnswers[], item) => {
-      const labels = Array.from(new Set(item.list));
+      const labels = Array.from(new Set(item.list)).filter(l => l != "");
       const list = labels.map((label, i) => {
         return { label, count: item.list.filter(l => l == label).length };
       });
