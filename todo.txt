@@ -1,7 +1,11 @@
+[DO ZROBIENIA]
+
 1. lepsza informacji o aktualizacji danych uzytkownika (np. modal z góry).
-2. Dokładniejsza walidacja podczas logowania i tworzenia konta ( zmiana wiadomości z sewera podczas błędów ).
 3. Dodanie możliwości przeglądania różnych typów wykresów (statystyki).
 4. Zrobienie podstrony dotyczącej jak zrobić ankiete.
-5. Obsugiwanie błędnych url-li od strony serwera. [ZROBIONE]
-6. Błąd w statystykach dotyczący pytania "tak/nie" - elementy są błędnie zliczane.
 7. Dodać czy właściwy użytkownik jest zalogowany w statystykach "/statystyki/:id".
+
+[ZROBIONE]
+2. Dokładniejsza walidacja podczas logowania i tworzenia konta ( zmiana wiadomości z sewera podczas błędów ).
+5. Obsugiwanie błędnych url-li od strony serwera.
+6. Błąd w statystykach dotyczący pytania "tak/nie" - elementy są błędnie zliczane.

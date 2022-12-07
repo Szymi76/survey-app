@@ -45,10 +45,11 @@ const useAuth = () => {
   };
 
   // FAILURE
-  const failure = () => {
+  const failure = (err: any = null) => {
+    console.log(err);
     setState(state => {
       state.loading = false;
-      state.error = new Error("Api fetch error");
+      state.error = new Error(err ? err.response.data.message : "Coś poszło nie tak");
     });
   };
 
@@ -76,7 +77,7 @@ const useAuth = () => {
         failure();
       }
     } catch (err) {
-      failure();
+      failure(err);
       console.warn(err);
     }
   };
@@ -98,7 +99,7 @@ const useAuth = () => {
         failure();
       }
     } catch (err) {
-      failure();
+      failure(err);
       console.warn(err);
     }
   };

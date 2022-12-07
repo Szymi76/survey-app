@@ -8,7 +8,10 @@ const createAccount = async (req, res) => {
   try {
     const { displayName, email, password } = req.body;
     const foundUser = await User.findOne({ email });
-    if (foundUser) return res.status(403).json({ message: "User does already exists" });
+    if (foundUser)
+      return res
+        .status(403)
+        .json({ message: "Użytkownik z takim adresem email już istnieje" });
 
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
@@ -35,7 +38,7 @@ const createAccount = async (req, res) => {
 
     res.status(201).json(result);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: "Coś poszło nie tak" });
   }
 };
 

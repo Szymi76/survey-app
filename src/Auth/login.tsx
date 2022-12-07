@@ -52,7 +52,7 @@ const Login = () => {
 
         <button className="btn bg-indigo-700 btn-full">Zaloguj się</button>
         {localError && <p className="text-red-500 mt-2">{localError}</p>}
-        {error && !localError && <p className="text-red-500 mt-2">Coś poszło nie tak</p>}
+        {error && !localError && <p className="text-red-500 mt-2">{error.message}</p>}
       </form>
     </div>
   );
