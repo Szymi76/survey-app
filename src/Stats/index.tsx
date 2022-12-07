@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useContext } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import API from "../api";
 import { Answers, Survey, GroupedAnswers } from "../types/Survey";
 import AnswersStats from "./AnswersStats";
+import AuthContext from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Stats = () => {
   const { id } = useParams();
@@ -15,6 +17,20 @@ const Stats = () => {
     "GET",
     `${API.GET_SURVEY_URL}${id}`
   );
+
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+  if (!auth) return <></>;
+  const { user } = auth;
+
+  let validUser = survey && user && survey.userID === user.id ? true : false;
+
+  // PRZEKIEROWANIE JEŚLI UZYTKOWNIK JEST NIE ZALOGOWANY
+  useEffect(() => {
+    if (user === null) navigate("/auth", { state: { page: "login", redirect: "" } });
+    if (survey && user?.id !== survey.userID)
+      navigate("/auth", { state: { page: "login", redirect: "" } });
+  }, [user, survey]);
 
   // POGRÓPOWANE WSZYSTKIE ODPOWIEDZI DO ANKIETY
   const groupedAnswers: GroupedAnswers[] = useMemo(() => {
@@ -47,7 +63,7 @@ const Stats = () => {
 
   return (
     <section id="stats-wrapper">
-      {survey && (
+      {survey && validUser && (
         <div id="stats-header">
           <h1 className="text-2xl font-semibold mb-3">{survey.title}</h1>
           <p className="text-gray-300 font-light ">
