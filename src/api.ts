@@ -1,6 +1,4 @@
-const ORIGIN = import.meta.env.DEV
-  ? `http://192.168.1.10:3000/api/`
-  : `${location.origin}/api/`;
+const ORIGIN = import.meta.env.DEV ? `http://192.168.1.10:3000/api/` : `${location.origin}/api/`;
 
 const CREATE_ACCOUNT_URL = `${ORIGIN}auth/create-account`;
 const LOGIN_URL = `${ORIGIN}auth/login`;
