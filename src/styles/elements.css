@@ -189,12 +189,11 @@
 
 /*////////// input with label \\\\\\\\\\*/
 .input-with-label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
 }
-.input-with-label label{
-  
+.input-with-label label {
 }
 .input-with-label input {
   border: 1px solid var(--gray);
@@ -203,11 +202,45 @@
   border-radius: var(--radius);
 }
 .input-with-label input:hover {
- background-color: var(--light-gray);
- transition-duration: 100ms;
+  background-color: var(--light-gray);
+  transition-duration: 100ms;
 }
 .input-with-label input:focus {
   border: 2px solid var(--indigo);
   padding: calc(0.45rem - 1px) calc(1rem - 1px);
   transition-duration: 30ms;
+}
+
+/*////////// info modal \\\\\\\\\\*/
+
+.info-modal-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.info-modal {
+  background-color: var(--white);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  margin-top: 0.75rem;
+  animation: anime-info-modal 4s ease-in-out forwards;
+}
+
+@keyframes anime-info-modal {
+  0% {
+    transform: translateY(-200%);
+  }
+  15% {
+    transform: translateY(0);
+  }
+  90% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
 }
