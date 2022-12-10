@@ -1,19 +1,20 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import SurveyPage from "./Survey";
-import Creator from "./Creator";
-import Settings from "./Settings";
-import Auth from "./Auth";
-import Dashboard from "./Dashboard";
 import PageNotFound from "./components/PageNotFound";
-import Stats from "./Stats";
+
+import Home from "./pages/Home/Home";
+import Survey from "./pages/Survey";
+import Creator from "./pages/Creator";
+import Dashboard from "./pages/Dashboard";
+import Stats from "./pages/Stats";
+import Settings from "./pages/Settings";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/kreator" element={<Creator />} />
-      <Route path="/ankieta/:id" element={<SurveyPage />} />
+      <Route path="/ankieta/:id" element={<Survey />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/ustawienia" element={<Settings />} />
       <Route path="/dashboard" element={<Dashboard />} />

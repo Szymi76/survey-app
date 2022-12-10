@@ -2,6 +2,7 @@
 
 3. Dodanie możliwości przeglądania różnych typów wykresów (statystyki).
 4. Zrobienie podstrony dotyczącej jak zrobić ankiete.
+9. Dodanie całego linku do ankiety po utworzeniu nowej ankiety.
 
 [ZROBIONE]
 1. lepsza informacji o aktualizacji danych uzytkownika (np. modal z góry).
