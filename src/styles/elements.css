@@ -211,6 +211,13 @@
   transition-duration: 30ms;
 }
 
+.input-red input {
+  border: 1px solid var(--red) !important;
+}
+.input-red input:focus {
+  border: 2px solid var(--red) !important;
+}
+
 /*////////// info modal \\\\\\\\\\*/
 
 .info-modal-wrapper {
