@@ -4,6 +4,8 @@
 
 ## Kilka zdjeć strony
 
-![Zdjęcie strony głównej](https://github.com/Szymi76/survey-app-2.0/blob/main/public/home-image.png)
+![Zdjęcie strony głównej](public/survey-app/home.png)
+![Zdjęcie tworzenia ankietyj](public/survey-app/create_survey.png)
+![Zdjęcie wypełniania ankiety](public/survey/home.png)
 
-[Design](https://www.figma.com/file/WkmbpZJGX4KYsdNoPuoUJT/Ankieta-na-teraz)
+Design zrobiony w [figma](https://www.figma.com/file/WkmbpZJGX4KYsdNoPuoUJT/Ankieta-na-teraz).
