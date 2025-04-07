@@ -6,6 +6,6 @@
 
 ![Zdjęcie strony głównej](public/survey-app/home.png)
 ![Zdjęcie tworzenia ankietyj](public/survey-app/create_survey.png)
-![Zdjęcie wypełniania ankiety](public/survey/home.png)
+![Zdjęcie wypełniania ankiety](public/survey-app/survey.png)
 
 Design zrobiony w [figma](https://www.figma.com/file/WkmbpZJGX4KYsdNoPuoUJT/Ankieta-na-teraz).
